@@ -21,6 +21,17 @@ class ExpenseItem extends StatelessWidget {
             Row(
               children: [
                 Text('\$${expense.amount.toStringAsFixed(2)}'),
+                // Spacer : 이전 위젯과 다음 위젯 사이에 자동으로 공간이 생기게 한다
+                const Spacer(),
+                Row(
+                  children: [
+                    Icon(categoryIcons[expense.category]),
+                    const SizedBox(
+                      width: 8,
+                    ),
+                    Text(expense.formattedDate),
+                  ],
+                ),
               ],
             ),
           ],

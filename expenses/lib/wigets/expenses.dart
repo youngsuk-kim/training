@@ -20,9 +20,18 @@ class _ExpensesState extends State<Expenses> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('ExpenseTracker'),
+        actions: [
+          IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.add)
+          ),
+        ],
+      ),
       body: Column(
         children: [
-          Text('The chart'),
+          const Text('The chart'),
           // Expanded: 부모 위젯의 영역보다 크다면 부모 위젯 영역과 동일하게 크기를 변경 해준다
           Expanded(child: ExpensesList(expenses: _registeredExpenses))
         ],
