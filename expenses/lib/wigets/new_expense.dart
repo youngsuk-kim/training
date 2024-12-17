@@ -32,19 +32,25 @@ class _NewExpenseState extends State<NewExpense> {
             decoration: const InputDecoration(label: Text('Title')),
           ),
           TextField(
-            keyboardType: TextInputType.numberWithOptions(decimal: true,signed: false),
+            keyboardType:
+                TextInputType.numberWithOptions(decimal: true, signed: false),
             controller: _amountController,
             maxLength: 50,
-            decoration: const InputDecoration(label: Text('Amount')),
+            decoration:
+                const InputDecoration(prefixText: '\$ ', label: Text('Amount')),
           ),
           Row(
             spacing: 8,
             children: [
-              ElevatedButton(onPressed: () {
-                print(_titleController.text);
-                print(_amountController.text);
-              }, child: const Text('Save Expense')),
-              ElevatedButton(onPressed: () => Navigator.pop(context), child: Text('Close'))
+              TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: const Text('Cancel')),
+              ElevatedButton(
+                  onPressed: () {
+                    print(_titleController.text);
+                    print(_amountController.text);
+                  },
+                  child: const Text('Save Expense')),
             ],
           ),
         ],
