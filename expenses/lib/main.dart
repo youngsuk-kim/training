@@ -1,4 +1,4 @@
-import 'package:expenses/expenses.dart';
+import 'package:expenses/wigets/expenses.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
