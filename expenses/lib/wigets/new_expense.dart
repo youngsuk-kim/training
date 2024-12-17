@@ -13,6 +13,12 @@ class _NewExpenseState extends State<NewExpense> {
   final _titleController = TextEditingController();
   final _amountController = TextEditingController();
 
+  void _presentDatePicker() {
+    final now = DateTime.now();
+    final firstDate = DateTime(now.year - 1, now.month, now.day);
+    showDatePicker(context: context, firstDate: firstDate, lastDate: now, initialDate: now);
+  }
+
   @override
   void dispose() {
     _titleController.dispose();
@@ -31,16 +37,39 @@ class _NewExpenseState extends State<NewExpense> {
             maxLength: 50,
             decoration: const InputDecoration(label: Text('Title')),
           ),
-          TextField(
-            keyboardType:
-                TextInputType.numberWithOptions(decimal: true, signed: false),
-            controller: _amountController,
-            maxLength: 50,
-            decoration:
-                const InputDecoration(prefixText: '\$ ', label: Text('Amount')),
+          Row(
+            children: [
+              Expanded(
+                  child: Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      keyboardType: TextInputType.number,
+                      controller: _amountController,
+                      maxLength: 50,
+                      decoration: const InputDecoration(
+                          prefixText: '\$ ', label: Text('Amount')),
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  Expanded(
+                      child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        const Text("Selected Date"),
+                        IconButton(
+                          onPressed: _presentDatePicker,
+                          icon: const Icon(
+                            Icons.calendar_month,
+                          ),
+                        )
+                      ],
+                  ))
+                ],
+              ))
+            ],
           ),
           Row(
-            spacing: 8,
             children: [
               TextButton(
                   onPressed: () => Navigator.pop(context),
@@ -51,6 +80,13 @@ class _NewExpenseState extends State<NewExpense> {
                     print(_amountController.text);
                   },
                   child: const Text('Save Expense')),
+              const SizedBox(
+                width: 16,
+              ),
+              Expanded(
+                  child: Row(
+                children: [],
+              ))
             ],
           ),
         ],
