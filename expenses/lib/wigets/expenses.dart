@@ -1,3 +1,4 @@
+import 'package:expenses/wigets/chart/chart.dart';
 import 'package:expenses/wigets/expenses_list/expenses_list.dart';
 import 'package:expenses/models/expenses.dart';
 import 'package:expenses/wigets/new_expense.dart';
@@ -82,7 +83,7 @@ class _ExpensesState extends State<Expenses> {
       ),
       body: Column(
         children: [
-          const Text('The chart'),
+          Chart(expenses: _registeredExpenses),
           // Expanded: 부모 위젯의 영역보다 크다면 부모 위젯 영역과 동일하게 크기를 변경 해준다
           Expanded(child: mainContent),
         ],
